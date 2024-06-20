@@ -15,6 +15,12 @@ public class ProyectilScript : MonoBehaviour
     {
 
     }
+<<<<<<< side/Ximena
+=======
+<<<<<<< Updated upstream
+    
+=======
+>>>>>>> main
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -25,9 +31,17 @@ public class ProyectilScript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+<<<<<<< side/Ximena
+=======
+        //implementar
+>>>>>>> main
         if (particulas !=null) {
             particulas.Play();
         }
     }
 
+<<<<<<< side/Ximena
+=======
+>>>>>>> Stashed changes
+>>>>>>> main
 }
