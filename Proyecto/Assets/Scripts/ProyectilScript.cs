@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ProyectilScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public ParticleSystem particulas;
+    public GameObject particlePrefab;
     void Start()
     {
     }
@@ -15,33 +14,31 @@ public class ProyectilScript : MonoBehaviour
     {
 
     }
-<<<<<<< side/Ximena
-=======
-<<<<<<< Updated upstream
-    
-=======
->>>>>>> main
 
     private void OnCollisionEnter(Collision collision)
     {
-     if(particulas!=null)
+        if (particlePrefab!=null)
         {
-            particulas.Play();
+            GameObject particleSystem = Instantiate(particlePrefab, collision.contacts[0].point, transform.rotation);
+            particleSystem.transform.SetParent(collision.transform);
+            ParticleSystem particle = particleSystem.GetComponent<ParticleSystem>();
+            if(particle != null)
+            {
+                particle.Play();
+            }
         }  
     }
     private void OnTriggerEnter(Collider other)
     {
-<<<<<<< side/Ximena
-=======
-        //implementar
->>>>>>> main
-        if (particulas !=null) {
-            particulas.Play();
+        if (particlePrefab!=null)
+        {
+            GameObject particleSystem = Instantiate(particlePrefab, other.transform.position, transform.rotation);
+            particleSystem.transform.SetParent(other.transform);
+            ParticleSystem particle = particleSystem.GetComponent<ParticleSystem>();
+            if (particle != null)
+            {
+                particle.Play();
+            }
         }
     }
-
-<<<<<<< side/Ximena
-=======
->>>>>>> Stashed changes
->>>>>>> main
 }
