@@ -15,5 +15,24 @@ public class ProyectilScript : MonoBehaviour
     {
 
     }
+<<<<<<< Updated upstream
     
+=======
+
+    private void OnCollisionEnter(Collision collision)
+    {
+     if(particulas!=null)
+        {
+            particulas.Play();
+        }  
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        //implementar
+        if (particulas !=null) {
+            particulas.Play();
+        }
+    }
+
+>>>>>>> Stashed changes
 }
