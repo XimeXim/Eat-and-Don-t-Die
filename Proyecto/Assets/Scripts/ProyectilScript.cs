@@ -6,6 +6,7 @@ public class ProyectilScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public ParticleSystem particulas;
+    public GameObject particleSystemPrefab;
     void Start()
     {
     }
@@ -15,33 +16,26 @@ public class ProyectilScript : MonoBehaviour
     {
 
     }
-<<<<<<< side/Ximena
-=======
-<<<<<<< Updated upstream
-    
-=======
->>>>>>> main
+
 
     private void OnCollisionEnter(Collision collision)
     {
      if(particulas!=null)
         {
+            Vector3 position;
+            position = new Vector3(0, 0, 0);
+            GameObject block = Instantiate(particleSystemPrefab, position, Quaternion.identity);
+
+            block.transform.parent = transform;
             particulas.Play();
         }  
     }
     private void OnTriggerEnter(Collider other)
     {
-<<<<<<< side/Ximena
-=======
-        //implementar
->>>>>>> main
+
         if (particulas !=null) {
             particulas.Play();
         }
     }
 
-<<<<<<< side/Ximena
-=======
->>>>>>> Stashed changes
->>>>>>> main
 }
