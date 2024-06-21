@@ -19,7 +19,8 @@ public class ProyectilScript : MonoBehaviour
     {
         if (particlePrefab!=null)
         {
-            GameObject particleSystem = Instantiate(particlePrefab, collision.contacts[0].point, transform.rotation);
+            ContactPoint contact = collision.contacts[0];
+            GameObject particleSystem = Instantiate(particlePrefab, contact.point, transform.rotation);
             particleSystem.transform.SetParent(collision.transform);
             ParticleSystem particle = particleSystem.GetComponent<ParticleSystem>();
             if(particle != null)

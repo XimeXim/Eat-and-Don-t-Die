@@ -85,4 +85,8 @@ public class Menu_Manager : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+    public void Salir()
+    {
+        Application.Quit();
+    }
 }
