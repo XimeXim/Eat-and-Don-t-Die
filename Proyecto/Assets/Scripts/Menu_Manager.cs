@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class Menu_Manager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject mainMenuPanel;
     public GameObject statsPanel;
     public Text perdidasText;
     public Text ganadoText;
@@ -20,13 +19,12 @@ public class Menu_Manager : MonoBehaviour
     {
         CargarEstadisticas();
         ActualizarEstadisticasUI();
-        MostrarMenuPrincipal();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void CargarEstadisticas()
@@ -68,15 +66,8 @@ public class Menu_Manager : MonoBehaviour
         bloquesText.text = "Bloques eliminados: " + bloques;
     }
 
-    public void MostrarMenuPrincipal()
-    {
-        mainMenuPanel.SetActive(true);
-        statsPanel.SetActive(false);
-    }
-
     public void MostrarPanelEstadisticas()
     {
-        mainMenuPanel.SetActive(false);
         statsPanel.SetActive(true);
         ActualizarEstadisticasUI();
     }
@@ -85,8 +76,5 @@ public class Menu_Manager : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
-    public void Salir()
-    {
-        Application.Quit();
-    }
 }
+    
