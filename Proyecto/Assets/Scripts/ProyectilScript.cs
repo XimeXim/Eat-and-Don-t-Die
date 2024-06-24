@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class ProyectilScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public ParticleSystem particulas;
-    public GameObject particleSystemPrefab;
+    public GameObject particlePrefab;
     void Start()
     {
     }
@@ -17,25 +15,31 @@ public class ProyectilScript : MonoBehaviour
 
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
-     if(particulas!=null)
+        if (particlePrefab!=null)
         {
-            Vector3 position;
-            position = new Vector3(0, 0, 0);
-            GameObject block = Instantiate(particleSystemPrefab, position, Quaternion.identity);
-
-            block.transform.parent = transform;
-            particulas.Play();
+            ContactPoint contact = collision.contacts[0];
+            GameObject particleSystem = Instantiate(particlePrefab, contact.point, transform.rotation);
+            particleSystem.transform.SetParent(collision.transform);
+            ParticleSystem particle = particleSystem.GetComponent<ParticleSystem>();
+            if(particle != null)
+            {
+                particle.Play();
+            }
         }  
     }
     private void OnTriggerEnter(Collider other)
     {
-
-        if (particulas !=null) {
-            particulas.Play();
+        if (particlePrefab!=null)
+        {
+            GameObject particleSystem = Instantiate(particlePrefab, other.transform.position, transform.rotation);
+            particleSystem.transform.SetParent(other.transform);
+            ParticleSystem particle = particleSystem.GetComponent<ParticleSystem>();
+            if (particle != null)
+            {
+                particle.Play();
+            }
         }
     }
-
 }
