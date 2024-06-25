@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     public AudioClip menuMusic;
     public AudioClip gameMusic;
-    private AudioSource audioSource;
+    public  AudioSource audioSource;
 
     void Awake()
     {
@@ -44,6 +44,10 @@ public class AudioManager : MonoBehaviour
 
     public void PlayGameMusic()
     {
+        //deberia morir la musica pero por alguna razon mistica si funciona...
+        if(audioSource==null){
+            return;
+        }
         if (audioSource.clip != gameMusic)
         {
             audioSource.clip = gameMusic;
