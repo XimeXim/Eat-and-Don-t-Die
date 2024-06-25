@@ -33,7 +33,8 @@ public class ChangeScene : MonoBehaviour
 
     public void LoadGameScene()
     {
-        MoveToScene(3);
+        
+        SceneManager.LoadScene(3);
         AudioManager.instance.PlayGameMusic();
     }
 

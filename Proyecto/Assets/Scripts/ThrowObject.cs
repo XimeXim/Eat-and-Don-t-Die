@@ -19,7 +19,7 @@ public class ThrowObject : MonoBehaviour
     }
     }
 
-    void Throw()
+    public void Throw()
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();

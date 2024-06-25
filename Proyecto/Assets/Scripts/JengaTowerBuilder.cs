@@ -5,6 +5,8 @@ using UnityEngine;
 public class JengaTowerBuilder : MonoBehaviour
 {
     public GameObject blockPrefab;
+    public GameObject parent;
+
     public int layers = 18; // Número de capas de la torre
 
     void Start()
@@ -26,7 +28,7 @@ public class JengaTowerBuilder : MonoBehaviour
                     Vector3 position;
                     position = startPosition + new Vector3(0, i * blockHeight, j*blockWidth);
                     GameObject block = Instantiate(blockPrefab, position, Quaternion.identity);
-                    block.transform.parent = transform;
+                    block.transform.parent = parent.transform;
                 }
             }else{
                 for(int j=0;j<3;j++){
@@ -37,10 +39,34 @@ public class JengaTowerBuilder : MonoBehaviour
                     block.transform.Rotate(0, 90, 0);
 
                     block.transform.position = startPosition +new Vector3(j*blockWidth-blockWidth,i*blockHeight,+blockWidth);
-                    block.transform.parent = transform;
+                    block.transform.parent = parent.transform;
                 }
             }
 
         }
+    }
+    public void onTargetFound(){
+        GameObject parentObject = this.parent;
+        Debug.Log("activando gravedad a "+parentObject.transform.childCount);
+
+        // Iterar a través de todos los hijos
+        for (int i = 0; i < parentObject.transform.childCount; i++)
+        {
+            // Obtener el hijo en el índice i
+            Transform childTransform = parentObject.transform.GetChild(i);
+            GameObject childObject = childTransform.gameObject;
+            Rigidbody rb = childObject.GetComponent<Rigidbody>();
+
+            if (rb != null)
+            {
+                // Activar la gravedad
+                rb.useGravity = true;
+                rb.isKinematic = false;
+            }
+            Debug.Log("Gravedad activada para: " + childObject.name);
+        }
+    }
+    public void onTargetLost(){
+
     }
 }
