@@ -35,4 +35,16 @@ public class Estadistica : MonoBehaviour
     {
         
     }
+    private void Awake()
+    {
+        if (_instancia == null)
+        {
+            _instancia = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (_instancia != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
