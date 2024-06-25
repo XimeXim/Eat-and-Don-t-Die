@@ -12,9 +12,6 @@ public class Menu_Manager : MonoBehaviour
     public Text ganadoText;
     public Text bloquesText;
 
-    private int perdidas;
-    private int ganado;
-    private int bloques;
     void Start()
     {
         CargarEstadisticas();
@@ -29,41 +26,41 @@ public class Menu_Manager : MonoBehaviour
 
     void CargarEstadisticas()
     {
-        perdidas = PlayerPrefs.GetInt("Perdidas", 0);
-        ganado = PlayerPrefs.GetInt("Ganado", 0);
-        bloques = PlayerPrefs.GetInt("Bloques", 0);
+        Estadistica.Instancia.lose = PlayerPrefs.GetInt("Perdidas", 0);
+        Estadistica.Instancia.win = PlayerPrefs.GetInt("Ganado", 0);
+        Estadistica.Instancia.blocks_drop = PlayerPrefs.GetInt("Bloques", 0);
     }
 
     void GuardarEstadisticas()
     {
-        PlayerPrefs.SetInt("Perdidas", perdidas);
-        PlayerPrefs.SetInt("Ganado", ganado);
-        PlayerPrefs.SetInt("Bloques", bloques);
+        PlayerPrefs.SetInt("Perdidas", Estadistica.Instancia.lose);
+        PlayerPrefs.SetInt("Ganado", Estadistica.Instancia.win);
+        PlayerPrefs.SetInt("Bloques", Estadistica.Instancia.blocks_drop);
     }
 
     public void IncrementarPerdidas()
     {
-        perdidas++;
+        Estadistica.Instancia.lose++;
         GuardarEstadisticas();
     }
 
     public void IncrementarGanado()
     {
-        ganado++;
+        Estadistica.Instancia.win++;
         GuardarEstadisticas();
     }
 
     public void IncrementarBloques()
     {
-        bloques++;
+        Estadistica.Instancia.blocks_drop++;
         GuardarEstadisticas();
     }
 
     void ActualizarEstadisticasUI()
     {
-        perdidasText.text = "Cantidad de LOSE: " + perdidas;
-        ganadoText.text = "Cantidad de WIN: " + ganado;
-        bloquesText.text = "Bloques eliminados: " + bloques;
+        perdidasText.text = "Cantidad de LOSE: " + Estadistica.Instancia.lose;
+        ganadoText.text = "Cantidad de WIN: " + Estadistica.Instancia.win;
+        bloquesText.text = "Bloques eliminados: " + Estadistica.Instancia.blocks_drop;
     }
 
     public void MostrarPanelEstadisticas()
@@ -74,7 +71,7 @@ public class Menu_Manager : MonoBehaviour
 
     public void PlayJugar()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(3);
     }
 }
     

@@ -27,6 +27,10 @@ public class ProyectilScript : MonoBehaviour
             {
                 particle.Play();
             }
+            if (collision.gameObject.CompareTag("Block"))
+            {
+                FindObjectOfType<ThrowObject>().OnBlockRemoved();
+            }
         }  
     }
     private void OnTriggerEnter(Collider other)
@@ -39,6 +43,10 @@ public class ProyectilScript : MonoBehaviour
             if (particle != null)
             {
                 particle.Play();
+            }
+            if (other.gameObject.CompareTag("Block"))
+            {
+                FindObjectOfType<ThrowObject>().OnBlockRemoved();
             }
         }
     }

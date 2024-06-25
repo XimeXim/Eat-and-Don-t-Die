@@ -30,6 +30,7 @@ public class JengaTowerBuilder : MonoBehaviour
                     position = startPosition + new Vector3(0, distance+i * blockHeight, j*blockWidth);
                     GameObject block = Instantiate(blockPrefab, position, Quaternion.identity);
                     block.transform.parent = parent.transform;
+                    
                 }
             }else{
                 for(int j=0;j<3;j++){
@@ -41,6 +42,7 @@ public class JengaTowerBuilder : MonoBehaviour
 
                     block.transform.position = startPosition +new Vector3(j*blockWidth-blockWidth,i*blockHeight,+blockWidth);
                     block.transform.parent = parent.transform;
+                    
                 }
             }
 
@@ -68,6 +70,22 @@ public class JengaTowerBuilder : MonoBehaviour
         }
     }
     public void onTargetLost(){
+        if (CheckIfTowerCollapsed())
+        {
+            FindObjectOfType<ThrowObject>().OnGameLost();
+        }
 
+    }
+    bool CheckIfTowerCollapsed()
+    {
+        int count = 0;
+        foreach (Transform block in parent.transform)
+        {
+            if (block.position.y < 0.015f) 
+            {
+                count++;
+            }
+        }
+        return count >= layers * 3 / 2; 
     }
 }

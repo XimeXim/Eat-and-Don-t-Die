@@ -17,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Perdiste.unity
+    guid: d70eb97f90bfc6745aeb9c134b9665e6
+  - enabled: 1
+    path: Assets/Scenes/Ganaste.unity
+    guid: cddbbf5a8f1b65c4aa0defc7868f325f
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: df03cf4145fdc0043b213a8cae085c70, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: fec59386b4de2fd4487ae5f5f2d5a5a9, type: 2}
